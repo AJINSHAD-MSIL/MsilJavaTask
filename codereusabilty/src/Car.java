@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Car  implements Vehicleproperties{
+public class Car extends Vehicleproperty  implements Vehicleproperties{
 	
 	Driver driver;
 	CarModification modification;
@@ -85,4 +85,10 @@ public class Car  implements Vehicleproperties{
 		
 		System.out.println("yes its changed now your car body is"+modification.changeBody());
 	}
+	@Override
+	public void driving()
+	{
+		super.driving();
+	}
+	
 }
