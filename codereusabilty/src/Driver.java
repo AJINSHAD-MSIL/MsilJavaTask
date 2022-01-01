@@ -1,21 +1,18 @@
 
 public class Driver {	
-	String name,sex;
-	int age;
+	String name,sex,age;
 	
-	public void setdriver()
+	public void setDriverDetails(String name,String sex,String age)
 	{
-		if(sex.equals("male") || sex.equals("Male"))
-		{
-		System.out.println(name+" can drive "+" and his age is "+age);
-		}
-		else
-		{
-			System.out.println(name+" can drive "+" and her age is "+age);
-
-		}
+		this.name = name;
+		this.age = age;
+		this.sex  = sex;
 	}
 	
-	
+	public String getDriver()
+	{
+		return "current driver of this car is "+name+","+" his age is "+ age+" and gender is "+ sex ;
+		
+	}
 }
  

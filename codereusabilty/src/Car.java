@@ -1,33 +1,20 @@
 import java.util.Scanner;
 
-public class Car extends Vehicleproperty  implements Vehicleproperties{
+public class Car extends setCarFunction  implements Vehicleproperties{
 	
 	Driver driver;
-	CarModification modification;
+	CarModify modification;
 	Scanner sc = new Scanner(System.in);
-	public Car(Driver driver)
-	{
-		this.driver = driver;
-	}
-	public Car(CarModification modify)
-	{
-		this.modification = modify;
-	}
-	
-	@Override
-	public void driver() {
-		System.out.println("current driver of this car is "+driver.name+" and its age is "+driver.age+" gender is "+ driver.sex);
-	}
-
 	@Override
 	public String musicsystem() {
 		System.out.println("give any song name");
 		return sc.nextLine()+" is running now";
 	}
+	
 
 
 	@Override
-	public int tyres() {
+	public int changeTyre() {
 		System.out.println("enter the number of tyres 4 or 6");
 		if(sc.nextLine().equals("4"))
 		{
@@ -40,15 +27,17 @@ public class Car extends Vehicleproperty  implements Vehicleproperties{
 	}
 
 	@Override
-	public void gear() {
+	public void changeGear() {
 		
-		System.out.println("which gear need to change");
-		if(sc.nextLine().equals("3"))
+		System.out.println("Please select the gear in which the car needs to move ");
+		System.out.println("1.3\n2.4\n");
+
+		if(sc.nextLine().equals("1"))
 		{
 			System.out.println("gear is changed to 3");
 
 		}
-		else if(sc.nextLine().equals("4"))
+		else if(sc.nextLine().equals("2"))
 		{
 			System.out.println("gear is changed to 4");
 
@@ -69,26 +58,19 @@ public class Car extends Vehicleproperty  implements Vehicleproperties{
 	}
 
 	@Override
-	public void breaks() {
+	public void carBreak() {
 		
-		System.out.println("break is upplied");
+		System.out.println("break is applied");
 		return;
 	}
 
 	@Override
-	public void stearing() {
-		System.out.println("stearing now running");
+	public void stearingMotion() {
+		System.out.println("Rotate the steering wheel ");
 	}
-
 	@Override
 	public void body() {
 		
-		System.out.println("yes its changed now your car body is"+modification.changeBody());
-	}
-	@Override
-	public void driving()
-	{
-		super.driving();
-	}
-	
+		System.out.println("Your car body is changed as per your requirements!"+modification.changeBody());
+	}	
 }

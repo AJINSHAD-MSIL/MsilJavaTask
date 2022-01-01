@@ -1,9 +1,8 @@
 
 public interface Vehicleproperties {
 	
-	void driver();
 	String musicsystem();
-	void gear();
-	int tyres();
+	void changeGear();
+	int changeTyre();
 	void body();
 }
