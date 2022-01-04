@@ -11,14 +11,15 @@ public class LowRateCar extends Car{
 	}
 
 	@Override
-	public void changeGear() {
-		super.changeGear();
+	public void withGear() {
+		super.withGear();
 	}
 
 	@Override
 	public void clutch() {
 		super.clutch();
 	}
+	
 	
 
 	@Override
@@ -27,8 +28,8 @@ public class LowRateCar extends Car{
 	}
 
 	@Override
-	public void stearingMotion() {
-		super.stearingMotion();
+	public void normalStearing() {
+		super.normalStearing();
 	}
 	public String sterioAssembling(CarSterio music)
 	{

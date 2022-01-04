@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class CarModify{
 	Engine engine;
@@ -11,13 +9,22 @@ public class CarModify{
 		this.engine = engine;
 	}
 	
-	public void changeEngine()
+	public void changeEngine(Car car)
 	{
 		System.out.println("select the engine type");
 		System.out.println("1.2strock\n2.4strock");
 		String engin = sc.nextLine();
 		System.out.println("Select fuel type");
+		if(car instanceof LowRateCar)
+		{
+			System.out.println("1.Petrol");
+
+		}
+		else
+		{
 		System.out.println("1.Petrol\n2.Diesel");
+		}
+		
 		String type = sc.nextLine();
 		if(type.equalsIgnoreCase("1"))
 		{

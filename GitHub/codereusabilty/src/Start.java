@@ -6,6 +6,7 @@ public class Start {
 
 	public static void main(String[]args)
 	{
+		
 		Engine engine = new Engine();
 		Driver driver = new Driver();
 		CarModify modification = new CarModify(engine);
@@ -13,7 +14,7 @@ public class Start {
 		HighRateCar highrate = new HighRateCar(modification);
 		CarSterio music = new CarSterio();
 		printDetails("\t\t\t\t\t\t----------------::::::::::::start game:::::::::::-------------\n","");
-		printDetails("\n\n\n","");
+		printDetails("\n","");
 		while(true)
 		{
 			
@@ -25,7 +26,7 @@ public class Start {
 		switch(var)
 		{
 		case "1" :
-		case "2" :carMainFuun(modification,driver,engine,lowrate,var,highrate,music);
+		case "2" :commonCarFunctionalities(modification,driver,engine,lowrate,var,highrate,music);
 		break;
 		case "3": printDetails("please try agin !!!!","");
 		break;
@@ -34,14 +35,14 @@ public class Start {
 		}
 	}
 	
-	private static void carMainFuun(CarModify modification,Driver driver,Engine engine,LowRateCar lowRateCar,String var,HighRateCar highRateCar,CarSterio music)
+	private static void commonCarFunctionalities(CarModify modification,Driver driver,Engine engine,LowRateCar lowRateCar,String itrate,HighRateCar highRateCar,CarSterio music)
 	{
-		System.out.println("Please enter driver name,gender,age");
+		printDetails("Please enter driver name,gender,age","");
 		String name,gender,age;
 		name = scan.nextLine();
 		gender = scan.nextLine();
 		age = scan.nextLine();
-		switch(var)
+		switch(itrate)
 		{
 		
 		case "1":	
@@ -53,7 +54,7 @@ public class Start {
 		}
 		else
 		{
-			System.out.println("Please provide proper details of the driver!");
+			printDetails("Please provide proper details of the driver!","");
 		}
 		break;
 		case "2":
@@ -72,31 +73,30 @@ public class Start {
 	
 	private static void lowRangecar(LowRateCar car,CarSterio music)
 	{
-		
 		String amount,nextval;
 		printDetails("Please pay Rs.2L to avail the car","");
 		amount = scan.nextLine();
 		if(amount.equalsIgnoreCase("2L"))
 		{
-
+			
 		while(true)
 			{
-			printDetails("select any options","1.ModifyCarSettings\n2.break\n3.gear\n4.clutch\n5.stearing\n6.exit");
+			printDetails("select any options","1.start\n2.break\n3.gear\n4.clutch\n5.stearing\n6.exit\n7.ModifyCarSettings");
 			String val = scan.nextLine();
-			if(val.equals("1"))
+			if(val.equals("7"))
 				
 			{
 				while(true)
 				{
 					
-				printDetails("1.addSterio\n2.change Engine\n3.changeBody\n4.exit","");
+				printDetails("1.addSterio\n2.change Engine\n3.changeBody\n4.tyres\n5.exit","");
 				if(scan.hasNextLine())
 				{
 				
 				nextval = scan.nextLine();
 				if(nextval.equalsIgnoreCase("1"))
 				{
-					printDetails("Need to set Serio then Press Y or y","");
+					printDetails("Need to set Sterio then Press Y or y","");
 					amount = scan.nextLine();
 					if(amount.equalsIgnoreCase("y"))
 					{
@@ -116,7 +116,7 @@ public class Start {
 				}
 				else if(nextval.equalsIgnoreCase("2"))
 				{
-					car.modification.changeEngine();
+					car.modification.changeEngine(car);
 				}
 				else if(nextval.equalsIgnoreCase("3"))
 				{
@@ -125,7 +125,7 @@ public class Start {
 				}
 				else
 				{
-					if(nextval.equals("4"))
+					if(nextval.equals("5"))
 					{
 						break;
 					}
@@ -137,9 +137,9 @@ public class Start {
 				}
 			}
 			}
-			else if(val.equals("2") || val.equals("3") || val.equals("4") || val.equals("5") || val.equals("6"))
+			else if(val.equals("1")||val.equals("2") || val.equals("3") || val.equals("4") || val.equals("5") || val.equals("6"))
 			{
-				carOperation(val);
+				carOperation(val,car);
 			}
 			}
 			}
@@ -151,22 +151,6 @@ public class Start {
 	}
 	
 
-	
-	private static void carOperation(String val)
-	{
-		switch(val)
-		{
-		case "2": (new Car()).carBreak();
-		break;
-		case "3":(new Car()).changeGear();
-		break;
-		case "4":(new Car()).clutch();
-		break;
-		case "5":(new Car()).stearingMotion();
-		break;
-		case "6":printDetails("Thank you for using this car","");
-		}
-	}
 	
 	
 	
@@ -180,9 +164,9 @@ public class Start {
 		while(true)
 			{
 			
-			printDetails("select any options","1.ModifyCarSettings\n2.break\n3.gear\n4.clutch\n5.stearing\n7.playMusic\n6.exit");
+			printDetails("select any options","1.Start\n2.ModifyCarSettings\n3.break\n4.clutch\n7.playMusic\n6.exit");
 			String val = scan.nextLine();
-			if(val.equals("1"))
+			if(val.equals("2"))
 				
 			{
 				while(true)
@@ -192,7 +176,7 @@ public class Start {
 				nextval = scan.nextLine();
 				if(nextval.equalsIgnoreCase("1"))
 				{
-						car.modification.changeEngine();
+						car.modification.changeEngine(car);
 				}
 				else if(nextval.equalsIgnoreCase("2"))
 				{
@@ -201,7 +185,7 @@ public class Start {
 				}
 				else
 				{
-					if(nextval.equals("3"))
+					if(nextval.equalsIgnoreCase("3"))
 					{
 							break;
 					}
@@ -209,13 +193,13 @@ public class Start {
 
 			}
 		}
-			else if(val.equals("2") || val.equals("3") || val.equals("4") || val.equals("5") || val.equals("6"))
+			else if(val.equalsIgnoreCase("1")||val.equalsIgnoreCase("2") || val.equalsIgnoreCase("3") || val.equalsIgnoreCase("4")  || val.equalsIgnoreCase("6"))
 			{
-				carOperation(val);
+				carOperation(val,car);
 			}
 			else
 			{
-				if(val.equals("7"))
+				if(val.equalsIgnoreCase("7"))
 					{
 						CarSterio music = new CarSterio();
 						playmusic(music);
@@ -231,6 +215,37 @@ public class Start {
 		
 }
 
+	private static void carOperation(String val,Car car)
+	{
+		switch(val)
+		{
+		case "1":printDetails("Car is Started Now","");
+		if(car instanceof  HighRateCar)
+		{
+			car.powerStearing();
+			car.withoutGear();
+			car.highMilage();
+		}
+		else
+		{
+		car.lowMilage();
+		}
+
+		break;
+		case "2": car.carBreak();
+		break;
+		case "3":car.withGear();
+		break;
+		case "4":car.clutch();
+		break;
+		case "5":car.normalStearing();
+		break;
+		case "6":printDetails("Thank you for using this car","");
+		System.exit(0);
+		break;
+		}
+	}
+	
 	
 	
 	private static void printDetails(String options,String details)
@@ -247,7 +262,7 @@ public class Start {
 			printDetails("1.play\n2.pause\n3.stop\n4.exit","select any option");
 			switch(scan.nextLine())
 			{
-			case "1":printDetails("please select the song","");
+			case "1":printDetails("please Enter the song","");
 			song = music.playMusic(scan.nextLine());
 			printDetails(song,"");
 			break;

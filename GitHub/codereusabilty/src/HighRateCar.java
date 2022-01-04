@@ -13,12 +13,6 @@ public class HighRateCar extends Car{
 	}
 
 	@Override
-	public void changeGear() {
-		super.changeGear();
-		
-	}
-
-	@Override
 	public void clutch() {
 		super.clutch();
 	}
@@ -27,10 +21,8 @@ public class HighRateCar extends Car{
 	public void carBreak() {
 		super.carBreak();
 	}
-
 	@Override
-	public void stearingMotion() {
-		super.stearingMotion();
+	public void powerStearing() {
+		super.powerStearing();
 	}
-
 }
