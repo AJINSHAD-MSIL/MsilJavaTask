@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="tab1">TAB1</string>
+    <string name="tab2">TAB2</string>
+    <string name="tab3">TAB3</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="id">ID:</string>
+    <string name="Name">Name:</string>
+    <string name="name">Name</string>
+    <string name="sssf">sssf</string>
+    <string name="dob">DOB:</string>
+    <string name="cancel">CANCEL</string>
+    <string name="ok">OK</string>
+    <string name="ddjdj">ddjdj</string>
+    <string name="user_profile">User Profile</string>
+    <string name="watchlist_search_new">serach</string>
+    <string name="ddd">ddd</string>
+    <string name="mail">MAIL ID:</string>
+    <string name="mobilenumber">Enter mobile number</string>
+    <string name="enteraddress">Enter Address</string>
+    <string name="enterdob">Enter DOB</string>
+    <string name="entername">Enter the name</string>
+    <string name="gender">GENDER:</string>
+    <string name="phone">PHONE:</string>
+    <string name="Address">ADDRESS:</string>
+    <string name="address">ADDRESS</string>
+    <string name="bdbbd">bdbbd</string>
+    <string name="ddnndn">ddnndn</string>
+    <string name="dddd">dddd</string>
+    <string name="PREFS_NAME">PREFS_NAME</string>
+    <string name="USER_LIST_RESPONSE">USER_LIST_RESPONSE</string>
+    <string name="userdetails">UserDetails</string>
+</resources>
