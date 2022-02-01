@@ -18,6 +18,7 @@ public class RecyclerItems extends RecyclerView.Adapter<RecyclerItems.ViewHolder
 
     RecyclerItems(Context context,List<User> users) {
         this.context = context;
+
         this.profileDatas = users;
 
     }

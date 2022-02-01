@@ -46,19 +46,15 @@ public class MyDialog extends Dialog implements android.view.View.OnClickListene
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.my_dialouge);
         radioGroup = findViewById(R.id.radiogroup);
-        input = findViewById(R.id.input);
         radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
         name = findViewById(R.id.radio0);
         dob = findViewById(R.id.radio1);
         address = findViewById(R.id.radio2);
         Mobile = findViewById(R.id.radio3);
-        input.setText("");
         ok = findViewById(R.id.btn_okay);
         cancel = findViewById(R.id.btn_cancel);
         setChecked();
         selectOptions(radioGroup);
-        checkTextChanged();
-        input.setOnClickListener(this);
         ok.setOnClickListener(this);
         cancel.setOnClickListener(this);
     }
@@ -71,52 +67,33 @@ public class MyDialog extends Dialog implements android.view.View.OnClickListene
                 SharedPreferences.Editor editor = getContext().getSharedPreferences("PREFS_NAME", 0).edit();
                 switch (checkedId) {
                     case R.id.radio0:
-                        editor.putString("name", "Name");
+                        editor.putString("input","name");
                         editor.apply();
                         break;
                     case R.id.radio1:
                         radioButton.getId();
-                        editor.putString("name", "DOB");
+                        editor.putString("input", "dob");
                         editor.commit();
                         break;
                     case R.id.radio2:
-                        editor.putString("name","ADDRESS");
+                        editor.putString("input","address");
                         editor.commit();
                         break;
                     case R.id.radio3:
-                        editor.putString("name", "mobile");
+                        editor.putString("input", "mobile");
                         editor.commit();
                         break;
                     default:
                         break;
                 }
-                checkTextChanged();
             }
         });
     }
 
-    private void checkTextChanged()
-    {
-        input.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updateRecyclerView(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-    }
     private void setChecked() {
         SharedPreferences prefs = getContext().getSharedPreferences("PREFS_NAME", 0);
-        String Name = prefs.getString("name", "Name");
+        String Name = prefs.getString("input", "Name");
         if(Name.equalsIgnoreCase("Name"))
         {
             name.setChecked(true);
@@ -136,32 +113,32 @@ public class MyDialog extends Dialog implements android.view.View.OnClickListene
     }
 
 
-    private void updateRecyclerView(String text) {
-        {
-            try {
-                SharedPreferences prefs = getContext().getSharedPreferences("PREFS_NAME", 0);
-                String response = prefs.getString("USER_LIST_RESPONSE", "ok");
-                Gson gson = new Gson();
-                profileDatas = gson.fromJson(response, ProfileDatas.class);
-                List<User> user = new ArrayList<>();
-                for (int i = 0; i < profileDatas.getUsers().size(); i++) {
-                    if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getName())) {
-                        user.add(profileDatas.getUsers().get(i));
-                    } else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getDob())) {
-                        user.add(profileDatas.getUsers().get(i));
-                    } else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getAddress())) {
-                        user.add(profileDatas.getUsers().get(i));
-                    } else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getPhone().getMobile())) {
-                        user.add(profileDatas.getUsers().get(i));
-                    }
-
-                }
-                searchInterface.updateRecyclerview(user);
-            } catch (IllegalStateException | JsonSyntaxException exception) {
-                Log.d("message",exception.getMessage());
-            }
-        }
-    }
+//    private void updateRecyclerView(String text) {
+//        {
+//            try {
+//                SharedPreferences prefs = getContext().getSharedPreferences("PREFS_NAME", 0);
+//                String response = prefs.getString("USER_LIST_RESPONSE", "ok");
+//                Gson gson = new Gson();
+//                profileDatas = gson.fromJson(response, ProfileDatas.class);
+//                List<User> user = new ArrayList<>();
+//                for (int i = 0; i < profileDatas.getUsers().size(); i++) {
+//                    if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getName())) {
+//                        user.add(profileDatas.getUsers().get(i));
+//                    } else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getDob())) {
+//                        user.add(profileDatas.getUsers().get(i));
+//                    } else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getAddress())) {
+//                        user.add(profileDatas.getUsers().get(i));
+//                    } else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getPhone().getMobile())) {
+//                        user.add(profileDatas.getUsers().get(i));
+//                    }
+//
+//                }
+//                searchInterface.updateRecyclerview(user);
+//            } catch (IllegalStateException | JsonSyntaxException exception) {
+//                Log.d("message",exception.getMessage());
+//            }
+//        }
+//    }
 
 
     @Override

@@ -29,15 +29,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#DA5F6A"
-                    android:gravity="center"
-                    android:scaleType="fitCenter"
-                    android:autofillHints="" />
-
                 <RelativeLayout
                     android:id="@+id/radio"
                     android:layout_width="wrap_content"

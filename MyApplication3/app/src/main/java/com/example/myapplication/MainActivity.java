@@ -23,7 +23,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,SearchInterface {
     EditText search;
@@ -137,27 +139,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-    private void updateFragment(String text) {
+    private void updateFragment(CharSequence text) {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS_NAME", 0);
         String response = prefs.getString("USER_LIST_RESPONSE", "OK");
         Gson gson = new Gson();
-        profileDatas = gson.fromJson(response, ProfileDatas.class);
         List<User> user = new ArrayList<>();
-        for (int i = 0; i < profileDatas.getUsers().size(); i++) {
-            if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getName())) {
-                user.add(profileDatas.getUsers().get(i));
+        profileDatas = gson.fromJson(response, ProfileDatas.class);
+            if(prefs.getString("input","ok").equals("name")) {
+                user = profileDatas.getUsers().stream().filter(word -> word.getName().toLowerCase().contains(text.toString().toLowerCase()))
+                        .collect(Collectors.toList());
             }
-            else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getDob())) {
-                user.add(profileDatas.getUsers().get(i));
+           else if(prefs.getString("input","ok").equals("dob")) {
+                user = profileDatas.getUsers().stream().filter(word -> word.getDob().toLowerCase().contains(text.toString().toLowerCase()))
+                        .collect(Collectors.toList());
             }
-            else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getAddress())) {
-                user.add(profileDatas.getUsers().get(i));
+           else if(prefs.getString("input","ok").equals("address")) {
+                user = profileDatas.getUsers().stream().filter(word -> word.getAddress().toLowerCase().contains(text.toString().toLowerCase()))
+                        .collect(Collectors.toList());
             }
-            else if (text.equalsIgnoreCase(profileDatas.getUsers().get(i).getPhone().getMobile())) {
-                user.add(profileDatas.getUsers().get(i));
+           else if(prefs.getString("input","ok").equals("mobile")) {
+                user = profileDatas.getUsers().stream().filter(word -> word.getPhone().getMobile().toLowerCase().contains(text.toString().toLowerCase()))
+                        .collect(Collectors.toList());
             }
-
-        }
         userProfile.updateRecyclerView(user);
     }
     private void openMyDialog() {
